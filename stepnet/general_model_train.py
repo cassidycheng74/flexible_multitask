@@ -46,7 +46,7 @@ train.train(filedir, seed=seed,  max_steps=1e8, ruleset = ruleset, rule_trains =
             'l1_h': 10**l1h,
             'l2_h': 10**l2h,
             'l1_weight': 10**l1w,
-            'l2_weight': 10**l2w
+            'l2_weight': 10**l2w,
             'l2_weight_init': 0,
             'sigma_rec': sigma_rec,
             'sigma_x': sigma_x,
