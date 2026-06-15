@@ -60,3 +60,16 @@ Find:
 
 6. Analysis:
    ?
+
+# June 15, 2026
+
+# Training Driscoll
+- on hold until cluster is running again
+- need to figure out my username
+
+# Task Setup
+- create and implement code for new tasks for meta-learning
+
+# Background Reading
+- re-read and understand Driscoll, Yang
+- look into meta-learning frameworks and possible ways to design them
