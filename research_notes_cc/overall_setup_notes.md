@@ -73,3 +73,18 @@ Find:
 # Background Reading
 - re-read and understand Driscoll, Yang
 - look into meta-learning frameworks and possible ways to design them
+
+# June 17, 2026
+
+# Transformer
+Question:
+Can a strong generic sequence model solve this task?
+
+If transformer succeeds and RNN fails:
+    task may require better memory/in-context learning.
+
+If plastic RNN succeeds where standard RNN fails:
+    evidence that plasticity helps.
+
+If transformer and plastic RNN both succeed:
+    compare mechanisms.
