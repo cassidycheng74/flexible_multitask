@@ -88,3 +88,13 @@ If plastic RNN succeeds where standard RNN fails:
 
 If transformer and plastic RNN both succeed:
     compare mechanisms.
+
+## Smoke test result
+
+Date: 2026-06-19  
+Node: A100 compute node, ran on CPU due CUDA library issue  
+Script: stepnet/general_model_train_smoke.py  
+Tasks: delaygo, delayanti  
+n_rnn: 32  
+Result: model built, trained, saved checkpoint, optimization finished  
+Conclusion: code pipeline works end-to-end
