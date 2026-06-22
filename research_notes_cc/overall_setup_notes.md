@@ -98,3 +98,36 @@ Tasks: delaygo, delayanti
 n_rnn: 32  
 Result: model built, trained, saved checkpoint, optimization finished  
 Conclusion: code pipeline works end-to-end
+
+## 2026-06-22 — First successful 15-task GPU run
+
+Compute:
+- Partition: kempner
+- GPU: A100 40GB
+- Node: holygpu8a19204
+
+Environment:
+- python/3.10.13-fasrc01
+- cuda/11.8.0-fasrc01
+- cudnn/8.9.2.26_cuda11-fasrc01
+- TensorFlow 2.13.1
+- GPU detected successfully
+
+Training:
+- Script: general_model_train_15task_test.py
+- n_rnn = 128
+- ruleset = all (15 tasks)
+- max_steps = 96000
+- display_step = ...
+
+Results:
+- fdgo = 0.68
+- reactgo = 0.40
+- fdanti = 0.64
+- reactanti = 0.53
+- harder memory/decision tasks still low
+
+Conclusion:
+- Full Driscoll pipeline runs on GPU.
+- Checkpoint saving works.
+- Need longer runs for convergence.
