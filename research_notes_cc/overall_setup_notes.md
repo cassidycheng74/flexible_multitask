@@ -144,5 +144,7 @@ Configuration:
 - max_steps = 1e6
 - GPU: A100
 
-Expected runtime:
-~5 hours
+Successfully ran, but not long enough
+
+Launched run 2: 5M steps, display every 1000 steps
+ SBatch Job ID: 24260734
