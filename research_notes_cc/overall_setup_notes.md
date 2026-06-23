@@ -132,19 +132,35 @@ Conclusion:
 - Checkpoint saving works.
 - Need longer runs for convergence.
 
-## 2026-06-22
+## 2026-06-23 — 5M-trial Driscoll 15-task run
 
-Successfully launched first sbatch Driscoll reproduction run.
+Run completed successfully.
 
-Job ID: 24257379
-
-Configuration:
-- 15 tasks
+Config:
+- Original 15 tasks
+- LeakyRNN
 - n_rnn = 128
-- max_steps = 1e6
-- GPU: A100
+- max_steps = 5,000,000
+- Final printed trial: 4,992,000
+- Runtime: 10,704 s ≈ 2.97 hours
+- Output: data/driscoll_15task_test/0
 
-Successfully ran, but not long enough
+Final performance:
+- fdgo: 0.99
+- reactgo: 0.99
+- delaygo: 0.82
+- fdanti: 0.99
+- reactanti: 0.99
+- delayanti: 0.73
+- delaydm1: 0.66
+- delaydm2: 0.73
+- contextdelaydm1: 0.68
+- contextdelaydm2: 0.68
+- multidelaydm: 0.77
+- dmsgo: 0.72
+- dmsnogo: 0.64
+- dmcgo: 0.87
+- dmcnogo: 0.89
 
-Launched run 2: 5M steps, display every 1000 steps
- SBatch Job ID: 24260734
+Conclusion:
+The original Driscoll 15-task training pipeline runs successfully on the Kempner A100 partition. Most tasks substantially improved by 5M trials, though several memory/decision tasks are not fully converged yet.
