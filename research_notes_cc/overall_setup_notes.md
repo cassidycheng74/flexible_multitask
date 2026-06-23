@@ -131,3 +131,18 @@ Conclusion:
 - Full Driscoll pipeline runs on GPU.
 - Checkpoint saving works.
 - Need longer runs for convergence.
+
+## 2026-06-22
+
+Successfully launched first sbatch Driscoll reproduction run.
+
+Job ID: 24257379
+
+Configuration:
+- 15 tasks
+- n_rnn = 128
+- max_steps = 1e6
+- GPU: A100
+
+Expected runtime:
+~5 hours
