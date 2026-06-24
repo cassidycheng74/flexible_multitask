@@ -2,7 +2,7 @@
 #SBATCH --partition=kempner
 #SBATCH --account=kempner_dgc_lab
 #SBATCH --job-name=driscoll15
-#SBATCH --time=08:00:00
+#SBATCH --time=16:00:00
 #SBATCH --mem=32G
 #SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:1
