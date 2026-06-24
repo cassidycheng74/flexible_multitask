@@ -230,3 +230,6 @@ The network was not fully converged at 5M trials.
 3. Begin integrating T20 (CueAssoc).
 4. Begin integrating T21 (PairedAssociation).
 5. Compare learning dynamics of new tasks against the original 15-task suite.
+
+## 2026-06-24
+Added all new tasks except T12 to the task_new_drafts code, need to implement into original Driscoll structure before running/training standard RNN on them
