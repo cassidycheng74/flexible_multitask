@@ -98,3 +98,30 @@ The network was not fully converged at 5M trials.
 3. Begin integrating T20 (CueAssoc).
 4. Begin integrating T21 (PairedAssociation).
 5. Compare learning dynamics of new tasks against the original 15-task suite.
+
+
+## Full Driscoll reproduction run
+
+Final trial: 99,840,000  
+Runtime: 81,926.13 s ≈ 22.8 hours  
+Model path: `data/all/LeakyRNN/softplus/diag/15_tasks/128_n_rnn/.../0/model.ckpt`
+
+Final performance:
+- fdgo: 1.00
+- reactgo: 1.00
+- delaygo: 0.97
+- fdanti: 1.00
+- reactanti: 1.00
+- delayanti: 0.97
+- delaydm1: 0.88
+- delaydm2: 0.88
+- contextdelaydm1: 0.82
+- contextdelaydm2: 0.86
+- multidelaydm: 0.90
+- dmsgo: 0.94
+- dmsnogo: 0.89
+- dmcgo: 0.93
+- dmcnogo: 0.93
+
+Conclusion:
+The full original 15-task Driscoll training run completed successfully. Most tasks reached high performance; context/delay decision tasks remain the lowest but substantially improved compared with 20M.
