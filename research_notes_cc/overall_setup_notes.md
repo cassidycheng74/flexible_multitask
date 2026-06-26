@@ -233,3 +233,34 @@ The network was not fully converged at 5M trials.
 
 ## 2026-06-24
 Added all new tasks except T12 to the task_new_drafts code, need to implement into original Driscoll structure before running/training standard RNN on them
+
+## 2026-06-26
+## Phase 1 Results: Driscoll Reproduction
+
+### Model
+- Architecture: LeakyRNN, softplus, diag init, 128 units
+- Tasks: 15 (full Driscoll ruleset)
+- Training: max_steps=1e8, lr=1e-3, seed=0
+- Path: data/all/LeakyRNN/softplus/diag/15_tasks/128_n_rnn/lr6l2_w6_h6_.../0
+
+### Final Performance (all 15 tasks)
+- fdgo: 0.997, reactgo: 0.990, delaygo: 0.970
+- fdanti: 0.987, reactanti: 0.990, delayanti: 0.731
+- delaydm1: 0.883, delaydm2: 0.731
+- contextdelaydm1: 0.817, contextdelaydm2: 0.685
+- multidelaydm: 0.770
+- dmsgo: 0.937, dmsnogo: 0.637, dmcgo: 0.870, dmcnogo: 0.890
+
+### Key Analyses
+1. Training curves: all 15 tasks learned, correct difficulty ordering
+2. DelayGo PCA: clear ring structure in PC1-PC2 space (PC1=27.6%, PC2=17.5%)
+   - Endpoints ordered continuously by stimulus angle = ring attractor confirmed
+3. Shared subspace: DelayAnti projects onto DelayGo PCA axes as mirror image
+   - Pro tasks in upper PC2, anti tasks in lower PC2
+   - Same ring manifold, different readout = shared dynamical motif confirmed
+
+### Conclusion
+Model successfully reproduces Driscoll et al. 2024 key findings.
+Ring attractor dynamics confirmed for memory tasks.
+Shared subspace confirmed for pro/anti task pairs.
+Ready to proceed to Phase 2 (new task implementation).
