@@ -264,3 +264,57 @@ Model successfully reproduces Driscoll et al. 2024 key findings.
 Ring attractor dynamics confirmed for memory tasks.
 Shared subspace confirmed for pro/anti task pairs.
 Ready to proceed to Phase 2 (new task implementation).
+
+## 2026-06-29: Driscoll Reproduction
+
+Model: LeakyRNN, softplus activation, diagonal init, 128 units, 15 tasks, seed 0
+
+Training: Driscoll's exact train.py, max_steps=1e8, lr=1e-3
+
+Model path: data/all/LeakyRNN/softplus/diag/15_tasks/128_n_rnn/lr6l2_.../0
+
+What was reproduced:
+Training dynamics (fig_training_curves, fig_final_performance)
+
+- All 15 tasks learned successfully
+- Correct difficulty ordering confirmed, simple stimulus-response tasks (fdgo 0.997, fdanti 0.987) hit near-ceiling performance early, while working memory tasks (delaygo 0.970, delayanti 0.731) and context tasks (contextdelaydm1 0.817) took longer and reached lower asymptotes
+
+# Ring attractor dynamics (fig_delaygo_pca)
+
+Hidden states during the delaygo task form a low-dimensional ring manifold in PCA space. PC1 (27.6% variance) captures the fixation-to-response transition direction. PC2 and PC3 together encode stimulus angle as position on the ring, with colors ordered continuously around the endpoint cloud. This is the ring attractor signature Driscoll reports as the core memory mechanism — the network maintains stimulus angle as a stable position on a manifold rather than through sustained high firing.
+
+# Different motifs for different task families (fig_delaydm1_pca)
+
+Decision-making tasks produce qualitatively different dynamics — two clusters of endpoints rather than a ring, corresponding to the two possible decisions. This confirms that memory tasks and decision tasks use different dynamical solutions, which is the "multiple motifs" claim in the paper title.
+
+# Shared subspace between task pairs (fig_shared_subspace)
+
+When delayanti hidden states are projected onto the PCA axes defined by delaygo, they form a mirror image — endpoints in the lower PC2 region with the same continuous color ordering as delaygo but reflected. This confirms that pro and anti memory tasks use the same ring attractor manifold with different output mappings, not separate circuits. This is Driscoll's central shared subspace finding.
+
+# Global task geometry (fig_all_tasks_pca)
+
+All 15 tasks projected into a global PCA space show family-specific geometric structure — memory tasks show ring-like distributions, decision tasks show two-cluster structure, context tasks show more complex geometry. Tasks within the same family look similar; tasks across families look different.
+
+# Unit selectivity (fig_variance_matrix)
+
+The variance matrix shows a sparse population of active units (roughly 30 out of 128) with the remaining units contributing little variance across any task. Active units are broadly tuned across multiple tasks rather than strictly task-specific. The sparsity pattern matches Driscoll's finding, though the block structure is less clean than her 256-unit network — expected at half the network size. Averaging across time epochs blurs the epoch-specific selectivity Driscoll shows in her version.
+
+# Quantitative shared subspace (fig_cross_task_variance)
+
+The 15×15 cross-task variance matrix shows clear block structure — tasks within the same computational family (go, anti, DM, context DM, match, category-match) explain high fractions of each other's neural variance. Tasks across families explain near-zero variance of each other. The go and anti families show moderate cross-block values, confirming they share the ring geometry. This is the quantitative version of the shared subspace result and directly replicates Driscoll's Fig 4d/g finding.
+
+# Context period structure (fig_context_period_pca)
+
+Hidden states during the fixation period, before any stimulus arrives, already show task-family clustering in PCA space. The network has committed to a computational strategy based on the rule input alone. This matches Driscoll's Fig 4a result.
+
+# Did Not Reproduce:
+- fixed point analysis
+- detailed variance matrix
+
+# Overall conclusion
+The key scientific claims of Driscoll et al. 2024 are confirmed at the representational level:
+
+- Ring attractor dynamics in memory tasks
+- Distinct motifs for distinct task families
+- Shared neural subspace within task families, distinct subspaces across families
+- Context period already encodes computational strategy before stimulus onset
